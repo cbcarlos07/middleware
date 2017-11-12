@@ -15,9 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middleware' => 'terms'], function (){
+    Route::get('/home', ['as'=> 'home', 'middleware' => 'terms','uses' => 'HomeController@index']);
+    Route::get('dashboard', function (){
+        return 'Dashboard';
+    });
+});
+
 Route::auth();
 
-Route::get('/home', ['as'=> 'home', 'middleware' => 'terms','uses' => 'HomeController@index']);
+
 
 Route::get('/terms', [ 'as' => 'terms.index', 'uses' => 'AppController@terms' ]);
 Route::post('/terms', [ 'as' => 'terms.accept', 'uses' => 'AppController@termsAccept' ]);
