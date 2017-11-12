@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/terms', [ 'as' => 'terms.index', 'uses' => 'AppController@terms' ]);
+Route::post('/terms', [ 'as' => 'terms.accept', 'uses' => 'AppController@termsAccept' ]);
