@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', ['as'=> 'home', 'middleware' => 'terms','uses' => 'HomeController@index']);
 
 Route::get('/terms', [ 'as' => 'terms.index', 'uses' => 'AppController@terms' ]);
 Route::post('/terms', [ 'as' => 'terms.accept', 'uses' => 'AppController@termsAccept' ]);

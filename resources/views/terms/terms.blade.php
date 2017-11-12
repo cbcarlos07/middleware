@@ -4,6 +4,10 @@
 
 <p>Suco de cevadiss deixa as pessoas mais interessantis. Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Delegadis gente finis, bibendum egestas augue arcu ut est. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.</p>
 
+@if( Session::has('error') )
+    <h1 style="color: red">{{ Session::get('error') }}</h1>
+@endif
+
 <form action="{{ route('terms.accept')  }}" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <label>
